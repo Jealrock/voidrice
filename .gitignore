@@ -46,6 +46,12 @@
 !.config/wall.png
 
 !.local/
+.local/*
+!.local/bin
+!.local/share
+.local/share/*
+!.local/share/larbs
+!.local/share/applications
 
 !.asoundrc
 !.gitignore
