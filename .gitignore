@@ -1,0 +1,12 @@
+*
+!*/.config
+!*/.local
+!.asoundrc
+!.gitignore
+!.profile
+!.tmux.conf
+!.xinitrc
+!.xprofile
+!.zprofile
+!LICENSE
+!README.md
