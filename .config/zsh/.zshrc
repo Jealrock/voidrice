@@ -1,5 +1,16 @@
 # Luke's config for the Zoomer Shell
 
+export ZPLUG_HOME=~/.config/zsh/.zplug
+source ~/.config/zsh/.zplug/init.zsh
+
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "plugins/ssh-agent", from:oh-my-zsh
+zstyle ":omz:plugins:ssh-agent" identities github
+
+# enable
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
@@ -22,34 +33,6 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
-export KEYTIMEOUT=1
-
-# Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
-}
-zle -N zle-keymap-select
-
-zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
-}
-zle -N zle-line-init
-
-# Use beam shape cursor on startup.
-echo -ne '\e[5 q'
-# Use beam shape cursor for each new prompt.
-preexec() { echo -ne '\e[5 q' ;}
-
 # Use lf to switch directories and bind it to ctrl-o
 lfcd () {
     tmp="$(mktemp)"
@@ -67,5 +50,20 @@ lfcd () {
 
 bindkey -s '^o' 'lfcd\n'  # zsh
 
-# Load zsh-syntax-highlighting; should be last.
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Then, source plugins and add commands to $PATH
+zplug load
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+source $HOME/.rvm/scripts/rvm
+
+# Add pyenv to PATH
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# CUDA
+export CUDA_VISIBLE_DEVICES=0
+export LD_LIBRARY_PATH="/opt/cuda/lib64"
