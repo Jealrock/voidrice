@@ -5,6 +5,7 @@ source ~/.config/zsh/.zplug/init.zsh
 
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "plugins/ssh-agent", from:oh-my-zsh
+zplug "plugins/extract", from:oh-my-zsh
 zstyle ":omz:plugins:ssh-agent" identities github
 
 # enable
@@ -55,11 +56,6 @@ bindkey -s '^o' 'lfcd\n'  # zsh
 # Then, source plugins and add commands to $PATH
 zplug load
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-
 # Add pyenv to PATH
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
@@ -68,3 +64,9 @@ eval "$(pyenv virtualenv-init -)"
 # CUDA
 export CUDA_VISIBLE_DEVICES=0
 export LD_LIBRARY_PATH="/opt/cuda/lib64"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+
