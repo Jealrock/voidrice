@@ -52,6 +52,7 @@ lfcd () {
 bindkey -s '^o' 'lfcd\n'  # zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+bindkey -s '^f' 'cd **\t'
 
 # Then, source plugins and add commands to $PATH
 zplug load
