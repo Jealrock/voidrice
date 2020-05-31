@@ -2,6 +2,11 @@
 
 # Use neovim for vim if present.
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
+alias \
+  ..='cd ..' \
+  ...='cd ../..' \
+  ....='cd ../../..' \
+  -- -='cd -'
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
@@ -31,9 +36,6 @@ alias \
 	e="$EDITOR" \
 	v="$EDITOR" \
 	p="sudo pacman" \
-	xi="sudo xbps-install" \
-	xr="sudo xbps-remove -R" \
-	xq="xbps-query" \
 	z="zathura"
 
 alias \

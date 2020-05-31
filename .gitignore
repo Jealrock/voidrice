@@ -41,6 +41,7 @@
 !.config/directories
 !.config/files
 !.config/inputrc
+!.config/shortcutrc
 !.config/mimeapps.list
 !.config/user-dirs.dirs
 !.config/wall.png
