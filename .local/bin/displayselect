@@ -53,13 +53,13 @@ multimon() { # Multi-monitor handler.
 	esac ;}
 
 onescreen() { # If only one output available or chosen.
-	xrandr --output "$1" --auto --scale 1.0x1.0 $(echo "$allposs" | grep -v "$1" | awk '{print "--output", $1, "--off"}' | tr '\n' ' ')
+	xrandr --output "$1" --auto --scale 1.0x1.0 $(echo "$allposs" | grep -v "$1" | awk '{print "--output", $1, "--off"}' | paste -sd ' ')
 	}
 
 postrun() { # Stuff to run to clean up.
 	setbg		# Fix background if screen size/arangement has changed.
 	remaps		# Re-remap keys if keyboard added (for laptop bases)
-	{ killall dunst ; setsid dunst & } >/dev/null 2>&1 # Restart dunst to ensure proper location on screen
+	{ killall dunst ; setsid -f dunst ;} >/dev/null 2>&1 # Restart dunst to ensure proper location on screen
 	}
 
 # Get all possible displays
