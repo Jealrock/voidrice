@@ -82,6 +82,9 @@ eval "$(pyenv virtualenv-init -)"
 export CUDA_VISIBLE_DEVICES=0
 export LD_LIBRARY_PATH="/opt/cuda/lib64"
 
+# Add doom executable to PATH
+export PATH="$PATH:$HOME/.emacs.d/bin"
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
