@@ -2,15 +2,15 @@ command=~/.local/bin/statusbar/$BLOCK_NAME
 separator_block_width=15
 markup=pango
 
-[record]
-command=cat /tmp/recordingicon
-interval=once
-signal=9
+#[record]
+#command=cat /tmp/recordingicon
+#interval=once
+#signal=9
 
-[music]
-label=🎼
-interval=once
-signal=11
+#[music]
+#label=🎼
+#interval=once
+#signal=11
 
 [news]
 interval=once
@@ -23,17 +23,17 @@ signal=6
 interval=once
 signal=8
 
-[torrent]
-interval=20
-signal=7
+#[torrent]
+#interval=20
+#signal=7
 
 [weather]
 interval=18000
 signal=5
 
-[mailbox]
-interval=180
-signal=12
+#[mailbox]
+#interval=180
+#signal=12
 
 #[memory]
 #interval=30
@@ -53,9 +53,9 @@ signal=10
 #interval=60
 #command=disk /home
 
-[battery]
-command=battery BAT0
-interval=5
+#[battery]
+#command=battery BAT0
+#interval=5
 
 [clock]
 label=📅
@@ -64,5 +64,9 @@ interval=30
 [internet]
 interval=10
 
-[help-icon]
+[xkblayout-status]
 interval=once
+signal=16
+
+# [help-icon]
+# interval=once

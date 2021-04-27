@@ -1,0 +1,11 @@
+#!/bin/sh
+
+symbol="$(xkblayout-state print "%s")"
+
+if [ "$symbol" == "us" ]; then
+	icon="🇺🇸"
+elif [ "$symbol" == "ru" ]; then
+	icon="🇷🇺"
+fi
+
+printf "%s\n" "$icon"
